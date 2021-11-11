@@ -18,9 +18,21 @@ namespace MvcData.Controllers
         {
             _peopleService = new PeopleService(new InMemoryPeopleRepo());
         }
-        public IActionResult PersonData()
+        public IActionResult PersonData(PeopleViewModel searchViewModel)
         {
-            return View(_peopleService.All());
+            List<Person> searchList;
+
+            if (!string.IsNullOrEmpty(searchViewModel.Search))
+            {
+                searchList = _peopleService.Search(searchViewModel.Search);
+            }
+            else
+            {
+                searchList = _peopleService.All();
+            }
+
+            return View(searchList);
+           
         }
 
         [HttpGet]
@@ -38,8 +50,7 @@ namespace MvcData.Controllers
                 _peopleService.Add(createPerson);
 
                 return RedirectToAction(nameof(PersonData));
-                //return View(PeopleData);
-
+              
             }
             return View(createPerson);
         }
@@ -69,23 +80,5 @@ namespace MvcData.Controllers
 
         }
 
-        //[HttpPost]
-        //[AutoValidateAntiforgeryToken]
-        public IActionResult Search(string search)
-        {
-            //List<Person> searchList;
-
-            //if (!string.IsNullOrEmpty(search))
-            //{
-            //    searchList = _peopleService.Search(search);
-
-            //    return RedirectToAction("PersonData", searchList);
-            //}
-
-            //    return RedirectToAction(nameof(PersonData));
-
-
-
-        }
     }
 }

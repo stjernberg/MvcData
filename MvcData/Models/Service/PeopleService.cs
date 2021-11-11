@@ -60,8 +60,9 @@ namespace MvcData.Models.Service
         public List<Person> Search(string search)
         {
             List<Person> filteredList = new List<Person>();
+            List<Person> personList = All();
 
-            foreach (Person person in All())
+            foreach (Person person in personList)
             {
                 if (person.Name.Contains(search) || person.City.Contains(search))
                 {
