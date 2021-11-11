@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<dl>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+
+    <dt>Phone number</dt>
+    <dd>@Model.PhoneNr</dd>
+
+    <dt>City</dt>
+    <dd>@Model.City</dd>
+</dl>
+
+<a asp-action="PersonData">Back to list of people.</a>
+
+<a asp-controller="People" asp-action="Delete"  asp-route-id="@Model.Id">Delete person</a>
+
+
