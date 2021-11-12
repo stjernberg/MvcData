@@ -20,8 +20,7 @@ namespace MvcData.Models.Repos
         {
            if (person != null)
             {
-                peopleList.Remove(person);
-                return true;
+                return peopleList.Remove(person);                
             }
 
             else
@@ -40,6 +39,8 @@ namespace MvcData.Models.Repos
                     person = aPerson;
                     break;
                 }
+
+               
             }
             return person;
         }
