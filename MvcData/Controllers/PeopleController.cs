@@ -71,12 +71,11 @@ namespace MvcData.Controllers
             
             if (_peopleService.Remove(id))
             {
-                return RedirectToAction(nameof(Details));
+                return RedirectToAction(nameof(PersonData));
             }
 
-            //Om det inte går att ta bort personen????
-
-            return RedirectToAction(nameof(Details));
+        
+            return RedirectToAction(nameof(PersonData));
 
         }
 
