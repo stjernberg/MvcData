@@ -1,34 +1,24 @@
 ﻿
 @model List<Person>
 
+<h1  class="mb-3">People List</h1>
 
-<h1>People List</h1>
+<a asp-action="Create" class="btn btn-primary">Add a person</a>
 
-<a asp-action="Create">Add a person</a>
+<div class="row font-weight-bold mt-4">
+    <div class="col-5">Name</div>
+    <div class="col-5">City </div>
+    <div class="col-2"></div>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>City</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (Person person in Model)
-        {
-            <tr>
-                <td>@person.Name</td>
-                <td>@person.City</td>
-                <td> @Html.ActionLink("Details", "Details", "People", new { id = person.Id })</td>
-            </tr>
-        }
-    </tbody>
-
-</table>
-
-<form asp-action="PersonData" asp-controller="People" method="post">
-    <label for"search">Search list.</label>
-    <input type="text" id="search" name="search" />
-    <button type="submit">Search</button>
-</form>
+@foreach (Person person in Model)
+{
+    <partial name="_PeopleDisplay" model="person" />
+}
+<div class="mt-5">
+    <form asp-action="PersonData" asp-controller="People" method="post">
+        <label for"search">Search list:</label>
+        <input type="text" id="search" name="search" />
+        <button class="btn btn-info" type="submit">Search</button>
+    </form>
+</div>

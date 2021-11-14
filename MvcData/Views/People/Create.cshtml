@@ -4,11 +4,12 @@
 <h1>Add a person</h1>
 
 <form asp-action="Create" method="post">
+    <div asp-validation-summary="All"></div>
     <label asp-for="Name"></label>
-    <input asp-for="Name"  />
+    <input asp-for="Name" />
     <span asp-validation-for="Name"></span>
-     <label asp-for="PhoneNr"></label>
-    <input asp-for="PhoneNr"/>
+    <label asp-for="PhoneNr"></label>
+    <input asp-for="PhoneNr" />
     <span asp-validation-for="PhoneNr"></span>
     <label asp-for="City"></label>
     <input asp-for="City" />

@@ -47,8 +47,16 @@ namespace MvcData.Controllers
         {
             if (ModelState.IsValid)
             {
-                _peopleService.Add(createPerson);
+                try
+                {
+                    _peopleService.Add(createPerson);
+                }
 
+                catch (ArgumentException exception)
+                {
+                    ModelState.AddModelError("Name & City", exception.Message);
+                    return View(createPerson);
+                }
                 return RedirectToAction(nameof(PersonData));
               
             }

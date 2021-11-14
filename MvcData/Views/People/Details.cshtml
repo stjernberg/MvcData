@@ -5,19 +5,27 @@
 
 <h1>Details</h1>
 
-<dl>
-    <dt>Name</dt>
-    <dd>@Model.Name</dd>
+@*<dl>
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
 
-    <dt>Phone number</dt>
-    <dd>@Model.PhoneNr</dd>
+        <dt>Phone number</dt>
+        <dd>@Model.PhoneNr</dd>
 
-    <dt>City</dt>
-    <dd>@Model.City</dd>
-</dl>
+        <dt>City</dt>
+        <dd>@Model.City</dd>
+    </dl>*@
+<div class="row">
+    <div class="col-4">Name</div>
+    <div class="col-4">@Model.Name</div>
+    <div class="col-4">Phone number</div>
+    <div class="col-4">@Model.PhoneNr</div>
+    <div class="col-4">City</div>
+    <div class="col-4">@Model.City</div>
+</div>
 
 <a asp-action="PersonData">Back to list of people.</a>
 
-<a asp-controller="People" asp-action="Delete"  asp-route-id="@Model.Id">Delete person</a>
+<a asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete person</a>
 
 

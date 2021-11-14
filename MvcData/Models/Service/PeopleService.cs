@@ -17,6 +17,11 @@ namespace MvcData.Models.Service
         }
         public Person Add(CreatePersonViewModel createPerson)
         {
+            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.City))
+            {
+                throw new ArgumentException("Model and brand cannot consist of backsapce and whitespace");
+            }
+
             Person person = new Person()
             {
                 Name = createPerson.Name,
