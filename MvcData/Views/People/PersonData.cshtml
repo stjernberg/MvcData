@@ -16,9 +16,9 @@
     <partial name="_PeopleDisplay" model="person" />
 }
 <div class="mt-5">
-    <form asp-action="PersonData" asp-controller="People" method="post">
-        <label for"search">Search list:</label>
-        <input type="text" id="search" name="search" />
+    <form class="form-inline" asp-action="PersonData" asp-controller="People" method="post">
+        <label for"search" class="mr-1">Search list:</label>
+        <input class="form-control mr-1" type="text" id="search" name="search" />
         <button class="btn btn-info" type="submit">Search</button>
     </form>
 </div>

@@ -71,6 +71,18 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+.container-width{
+    width: 60%;
+}
+
+.container {
+    width: 60%;
+}
+
+.navbar-custom {
+    background-color: #fde5d6;
+}
+
 tr td{
     margin-right: 10px;
 }

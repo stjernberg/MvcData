@@ -1,31 +1,25 @@
-﻿
+﻿@model Person
 @{
     ViewData["Title"] = "Details";
 }
 
 <h1>Details</h1>
 
-@*<dl>
-        <dt>Name</dt>
-        <dd>@Model.Name</dd>
 
-        <dt>Phone number</dt>
-        <dd>@Model.PhoneNr</dd>
-
-        <dt>City</dt>
-        <dd>@Model.City</dd>
-    </dl>*@
+<div class="row font-weight-bold mt-3 d-flex-column align-items-stretch" >
+    <div class="col-5 mt-3">Name</div>
+    <div class="col-5 mt-3">City</div>
+    <div class="col-2 mt-3">Phone nr</div>
+</div>
 <div class="row">
-    <div class="col-4">Name</div>
-    <div class="col-4">@Model.Name</div>
-    <div class="col-4">Phone number</div>
-    <div class="col-4">@Model.PhoneNr</div>
-    <div class="col-4">City</div>
-    <div class="col-4">@Model.City</div>
+    <div class="col-5 mt-3">@Model.Name</div>
+    <div class="col-5 mt-3">@Model.City</div>
+    <div class="col-2 mt-3">@Model.PhoneNr</div>
 </div>
 
-<a asp-action="PersonData">Back to list of people.</a>
 
-<a asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete person</a>
+<a asp-action="PersonData" class="btn btn-primary  mt-4 mr-3">Back to list of people.</a>
+
+<a class="btn btn-primary  mt-4" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete person</a>
 
 
