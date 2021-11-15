@@ -18,21 +18,22 @@ namespace MvcData.Controllers
         {
             _peopleService = new PeopleService(new InMemoryPeopleRepo());
         }
-        public IActionResult PersonData(PeopleViewModel searchViewModel)
+        public IActionResult Index()
         {
-            List<Person> searchList;
+            //PeopleViewModel searchViewModel
+            //List<Person> searchList;
 
-            if (!string.IsNullOrEmpty(searchViewModel.Search))
-            {
-                searchList = _peopleService.Search(searchViewModel.Search);
-            }
-            else
-            {
-                searchList = _peopleService.All();
-            }
+            //if (!string.IsNullOrEmpty(searchViewModel.Search))
+            //{
+            //    searchList = _peopleService.Search(searchViewModel.Search);
+            //}
+            //else
+            //{
+            //    searchList = _peopleService.All();
+            //}
 
-            return View(searchList);
-           
+            //return View(searchList);
+            return View();
         }
 
         [HttpGet]
@@ -57,18 +58,39 @@ namespace MvcData.Controllers
                     ModelState.AddModelError("Name & City", exception.Message);
                     return View(createPerson);
                 }
-                return RedirectToAction(nameof(PersonData));
+                return RedirectToAction(nameof(Index));
               
             }
             return View(createPerson);
         }
 
+       
+        [HttpGet]
+        public IActionResult ShowList()
+        {
+            List<Person> peopleList =  _peopleService.All();
+            if (peopleList != null)
+            {
+               return PartialView("_ListOfPeople", peopleList);
+           }
+            return NotFound();
+        }
+        [HttpPost]
+        public IActionResult ShowList(string search)
+        {
+            List<Person> peopleList = _peopleService.Search(search);
+            if (search != null)
+            {
+                return PartialView("_ListOfPeople", peopleList);
+            }
+            return NotFound();
+        }
         public IActionResult Details(int id)
         {
             Person person = _peopleService.FindById(id);
             if (person == null)
             {
-                return RedirectToAction(nameof(PersonData));
+                return RedirectToAction(nameof(Index));
             }
 
             return View(person);
@@ -79,11 +101,11 @@ namespace MvcData.Controllers
             
             if (_peopleService.Remove(id))
             {
-                return RedirectToAction(nameof(PersonData));
+                return RedirectToAction(nameof(Index));
             }
 
         
-            return RedirectToAction(nameof(PersonData));
+            return RedirectToAction(nameof(Index));
 
         }
 

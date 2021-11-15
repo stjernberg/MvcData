@@ -2,3 +2,10 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+const getPeopleList = (actionUrl) => {
+    $.get(actionUrl, (response) => {
+        console.log("response:", response);
+        document.getElementById("result").innerHTML = response;
+    });
+}

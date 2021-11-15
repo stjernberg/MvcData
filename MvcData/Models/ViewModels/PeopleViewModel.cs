@@ -7,7 +7,7 @@ namespace MvcData.Models.ViewModels
 {
     public class PeopleViewModel
     {
-        //public List<Person> Persons { get; set; }
+        public List<Person> Persons { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }

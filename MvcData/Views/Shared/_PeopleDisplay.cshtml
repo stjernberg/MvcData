@@ -1,9 +1,11 @@
 ﻿@model Person
 
-<div class="row">
+<div class="row text-left">
     <div class="col-5">@Model.Name</div>
     <div class="col-5 mt-2">@Model.City </div>
 
-    <button class="col-2 btn btn-info mt-2">@Html.ActionLink("Details", "Details", "People", new { id = Model.Id }, new { @style = "color:#fff;" })</button>
+    <div class="col-2"> @Html.ActionLink("Details", "Details", "People", new { id = Model.Id }) &#187;</div>
 
-    </div>
+</div>
+
+@*button class="col-2 btn btn-info mt-2 p-1 " , new { @style = "color:#000;" }*@
