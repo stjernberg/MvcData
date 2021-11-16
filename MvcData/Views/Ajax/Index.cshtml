@@ -3,7 +3,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class=" mb-4">List of people with Ajax</h1>
 
-<button onclick="getPeopleList('@Url.Action("ShowList", "People")')" class="btn btn-primary">Get list of people</button>
-<div id="result"></div>
+
+    <button onclick="getPeopleList('@Url.Action("ShowList", "Ajax")')" class="btn btn-primary mr-3">Get list of people</button>   
+        <input  name="id" type="number" step="1" id="idInput" placeholder="Enter id" />
+        <button onclick="postDetailsId('@Url.Action("DetailsAjax", "Ajax")', 'idInput')" class="btn btn-info mr-3">Show details by id</button>
+        <button onclick="postDetailsId('@Url.Action("DeleteAjax", "Ajax")', 'idInput')" class="btn btn-danger">Delete by id</button>
+
+    <div id="result"></div>

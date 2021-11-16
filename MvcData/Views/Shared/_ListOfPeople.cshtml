@@ -1,5 +1,6 @@
 ﻿@model List<Person>
 
+
 <div class="row font-weight-bold mt-4 text-left">
     <div class="col-5">Name</div>
     <div class="col-5">City </div>
@@ -9,5 +10,5 @@
 @foreach (Person person in Model)
 {
     <partial name="_PeopleDisplay" model="person" />
-   
+
 }

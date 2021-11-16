@@ -83,6 +83,6 @@ body {
     background-color: #fde5d6;
 }
 
-tr td{
-    margin-right: 10px;
+.c-input{
+    width: 20px;
 }
