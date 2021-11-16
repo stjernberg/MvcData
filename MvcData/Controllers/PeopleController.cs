@@ -18,8 +18,8 @@ namespace MvcData.Controllers
         {
             _peopleService = new PeopleService(new InMemoryPeopleRepo());
         }
-        public IActionResult Index()
-        {
+        //public IActionResult Index()
+        //{
             //PeopleViewModel searchViewModel
             //List<Person> searchList;
 
@@ -33,8 +33,8 @@ namespace MvcData.Controllers
             //}
 
             //return View(searchList);
-            return View();
-        }
+          //  return View();
+       // }
 
         [HttpGet]
         public IActionResult Create()
@@ -66,24 +66,43 @@ namespace MvcData.Controllers
 
        
         [HttpGet]
-        public IActionResult ShowList()
+        public IActionResult Index()
         {
             List<Person> peopleList =  _peopleService.All();
             if (peopleList != null)
             {
-               return PartialView("_ListOfPeople", peopleList);
+                //return PartialView("_ListOfPeople", peopleList);
+                return View(peopleList);
            }
-            return NotFound();
+            return View();
+            //return NotFound();
         }
+
         [HttpPost]
-        public IActionResult ShowList(string search)
+        public IActionResult Index(string search)
         {
             List<Person> peopleList = _peopleService.Search(search);
             if (search != null)
             {
-                return PartialView("_ListOfPeople", peopleList);
+                return View(peopleList);
+                //return PartialView("_ListOfPeople", peopleList);
             }
+            return View();
+            //return NotFound();
+        }
+
+        //Get list from Ajax
+        public IActionResult ShowList()
+        {
+            List<Person> people = _peopleService.All();
+
+            if (people != null)
+            {
+                return PartialView("_ListOfPeople", people);
+            }
+
             return NotFound();
+            
         }
         public IActionResult Details(int id)
         {

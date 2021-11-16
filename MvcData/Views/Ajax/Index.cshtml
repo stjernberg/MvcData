@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<button onclick="getPeopleList('@Url.Action("ShowList", "People")')" class="btn btn-primary">Get list of people</button>
+<div id="result"></div>

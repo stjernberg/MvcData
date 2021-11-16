@@ -5,7 +5,6 @@
 
 const getPeopleList = (actionUrl) => {
     $.get(actionUrl, (response) => {
-        console.log("response:", response);
         document.getElementById("result").innerHTML = response;
     });
 }
