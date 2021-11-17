@@ -62,23 +62,33 @@ namespace MvcData.Models.Service
             return remove;
         }
 
-        public List<Person> Search(string search)
+        public List<Person> Search(string search, string type)
         {
             List<Person> filteredList = new List<Person>();
             List<Person> personList = All();
 
             foreach (Person person in personList)
             {
-                if (person.Name.Contains(search) || person.City.Contains(search))
+                if (type == "city")
                 {
-                    filteredList.Add(person);
+                    if (person.City.Contains(search))
+                    {
+                        filteredList.Add(person);
+                    }
+                }
+
+                if (type == "name")
+                {
+                    if (person.Name.Contains(search))
+                    {
+                        filteredList.Add(person);
+                    }
                 }
             }
-
             return filteredList;
         }
-    }
 
-    
+        
+    }        
 }
 

@@ -49,6 +49,7 @@ namespace MvcData.Controllers
 
         }
 
+        [HttpPost]
         public IActionResult DeleteAjax(int id)
         {
             Person person = _peopleService.FindById(id);

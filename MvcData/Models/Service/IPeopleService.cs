@@ -10,7 +10,7 @@ namespace MvcData.Models.Service
     {
         Person Add(CreatePersonViewModel person);
         List<Person> All();
-        List<Person> Search(string search);
+        List<Person> Search(string search, string type);
         Person FindById(int id);
         bool Edit(int id, CreatePersonViewModel person);
         bool Remove(int id);

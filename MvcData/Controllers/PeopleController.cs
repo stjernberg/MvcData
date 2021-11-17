@@ -62,9 +62,9 @@ namespace MvcData.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(string search)
+        public IActionResult Index(string search, string type)
         {
-            List<Person> peopleList = _peopleService.Search(search);
+            List<Person> peopleList = _peopleService.Search(search, type);
             if (search != null)
             {
                 return View(peopleList);

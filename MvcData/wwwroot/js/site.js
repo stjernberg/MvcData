@@ -15,7 +15,6 @@ const postDetailsId = (actionUrl, inputId) => {
     $.post(actionUrl, data, (response) => {
         document.getElementById("result").innerHTML = response;
     })
-
         .fail(() => {
             document.getElementById("message").innerHTML = "A person with that id doesn't exist.";
         })
@@ -31,7 +30,6 @@ const postDeleteId = (actionUrl, inputId) => {
         document.getElementById("message").innerHTML = "The person was successfully deleted!";
 
     })
-
         .fail(() => {
             document.getElementById("message").innerHTML = "A person with that id doesn't exist.";
         })

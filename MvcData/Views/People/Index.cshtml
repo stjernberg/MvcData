@@ -5,24 +5,40 @@
 
 <a asp-action="Create" class="btn btn-primary mr-4">Add a person</a>
 
-    <div class="row font-weight-bold mt-4 text-left">
-            <div class="col-5">Name</div>
-            <div class="col-5">City </div>
-            <div class="col-2"></div>
+<div class="row font-weight-bold mt-4 text-left">
+    <div class="col-5">Name</div>
+    <div class="col-5">City </div>
+    <div class="col-2"></div>
+</div>
+
+@foreach (Person person in Model)
+{
+    <partial name="_PeopleDisplay" model="person" />
+}
+
+
+
+<div class="d-flex justify-content-center mt-4">
+    <form class="form-group" asp-action="Index" asp-controller="People" method="post">
+        <label for"search" class="mr-1 ">Search list:</label>
+        <div class="form-check" mb-3">
+            <label for="name">Name</label>
+            <input checked="checked"
+                   class="mr-2 "
+                   id="type"
+                   name="type"
+                   type="radio"
+                   value="name" />
+            <label for="city">City</label>
+            <input id="type"
+                   name="type"
+                   type="radio"
+                   value="city" />
         </div>
-
-        @foreach (Person person in Model)
-        {
-            <partial name="_PeopleDisplay" model="person" />
-        }
-
-      
-
-    <div class="d-flex justify-content-center mt-4">
-        <form class="form-inline" asp-action="Index" asp-controller="People" method="post">
-            <label for"search" class="mr-1 ">Search list:</label>
+        <div class="input-group">
             <input class="form-control mr-1" type="text" id="search" name="search" />
             <button type="submit" class="btn btn-info">Search</button>
-        </form>
+        </div>
+    </form>
 
-    </div>
+</div>
