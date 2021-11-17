@@ -19,7 +19,6 @@ namespace MvcData.Controllers
             _peopleService = new PeopleService(new InMemoryPeopleRepo());
         }
 
-
         public IActionResult Index()
         {
              return View();
