@@ -55,12 +55,11 @@ namespace MvcData.Controllers
             Person person = _peopleService.FindById(id);
             if (person != null)
             {
-                if (_peopleService.Remove(id))
-                {
-                    return RedirectToAction(nameof(ShowList));
-                }
-
+                _peopleService.Remove(id);
+                return RedirectToAction(nameof(ShowList));
+               
             }
+
             return NotFound();
 
         }
