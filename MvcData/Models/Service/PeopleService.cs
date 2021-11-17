@@ -92,7 +92,10 @@ namespace MvcData.Models.Service
         {
             List<Person> personList = All();
             List<Person> sortedList = personList.OrderBy(o => o.Name).ToList();
-          
+            //List<Person> sortedList = personList.OrderByDescending(o => o.Name).ToList();
+            //List<Person> sortedList = personList.OrderBy(o => o.City).ToList();
+            //List<Person> sortedList = personList.OrderByDescending(o => o.City).ToList();
+
             //personList.Sort((x, y) => x.Name.CompareTo(y.Name));
             return sortedList;
         }
