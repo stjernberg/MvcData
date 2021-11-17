@@ -73,6 +73,16 @@ namespace MvcData.Controllers
 
         }
 
+        public IActionResult SortList()
+        {
+            List<Person> peopleList = _peopleService.Sort();
+            if (peopleList != null)
+            {
+                return View("Index", peopleList);
+            }
+            return View("Index");
+        }
+
        
         public IActionResult Details(int id)
         {

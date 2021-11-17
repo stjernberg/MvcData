@@ -38,9 +38,7 @@ namespace MvcData.Models.Repos
                 {
                     person = aPerson;
                     break;
-                }
-
-               
+                }               
             }
             return person;
         }
@@ -51,7 +49,6 @@ namespace MvcData.Models.Repos
         }
 
        
-
         public bool Update(Person person)
         {
             Person originalPerson = GetById(person.Id);

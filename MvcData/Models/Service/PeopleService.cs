@@ -88,6 +88,14 @@ namespace MvcData.Models.Service
             return filteredList;
         }
 
+        public List<Person> Sort()
+        {
+            List<Person> personList = All();
+            List<Person> sortedList = personList.OrderBy(o => o.Name).ToList();
+          
+            //personList.Sort((x, y) => x.Name.CompareTo(y.Name));
+            return sortedList;
+        }
         
     }        
 }
