@@ -69,7 +69,7 @@ namespace MvcData.Controllers
             {
                 return View(peopleList);
             }
-            return View();
+           return NotFound();
 
         }
 

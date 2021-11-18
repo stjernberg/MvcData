@@ -66,7 +66,11 @@ namespace MvcData.Models.Service
         {
             List<Person> filteredList = new List<Person>();
             List<Person> personList = All();
-
+            if (string.IsNullOrWhiteSpace(search))
+            {
+                return null;
+            }
+          
             foreach (Person person in personList)
             {
                 if (type == "city")
