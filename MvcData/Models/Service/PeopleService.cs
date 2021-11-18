@@ -88,15 +88,30 @@ namespace MvcData.Models.Service
             return filteredList;
         }
 
-        public List<Person> Sort()
+        public List<Person> Sort(string sorting)
         {
             List<Person> personList = All();
-            List<Person> sortedList = personList.OrderBy(o => o.Name).ToList();
-            //List<Person> sortedList = personList.OrderByDescending(o => o.Name).ToList();
-            //List<Person> sortedList = personList.OrderBy(o => o.City).ToList();
-            //List<Person> sortedList = personList.OrderByDescending(o => o.City).ToList();
+            List<Person> sortedList;
+            
+            switch (sorting)
+            {
+                case "nameAsc":
+                    sortedList = personList.OrderBy(o => o.Name).ToList(); ;
+                    break;
 
-            //personList.Sort((x, y) => x.Name.CompareTo(y.Name));
+                case "nameDes":
+                    sortedList = personList.OrderByDescending(o => o.Name).ToList();
+                    break;
+
+                case "cityAsc":
+                    sortedList = personList.OrderBy(o => o.City).ToList();
+                    break;
+
+                default:
+                    sortedList = personList.OrderByDescending(o => o.City).ToList();
+                    break;
+            }
+
             return sortedList;
         }
         

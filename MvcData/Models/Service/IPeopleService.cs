@@ -14,6 +14,6 @@ namespace MvcData.Models.Service
         Person FindById(int id);
         bool Edit(int id, CreatePersonViewModel person);
         bool Remove(int id);
-        List<Person> Sort();
+        List<Person> Sort(string sorting);
     }
 }
