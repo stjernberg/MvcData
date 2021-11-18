@@ -23,7 +23,7 @@
 
 <div class=" mt-5 w-50 ml-5">
     <form class="form-group" asp-action="Index" asp-controller="People" method="post">
-        <label for"search" class="mr-1 ">Search list:</label>
+        <label for"search" class="mr-1 ">Search list by:</label>
         <div class="form-check" mb-3">
             <label for="name">Name</label>
             <input checked="checked"
@@ -43,7 +43,7 @@
             <button type="submit" class="btn btn-info">Search</button>
         </div>
     </form>
-    <form class="form-group mt-5"asp-action="SortList">
+    <form class="form-group mt-5" asp-action="SortList">
         <div class="input-group">
             <select name="sorting" id="sorting" class="form-control mb-2">
                 <option value="nameAsc">Name asc</option>
