@@ -14,9 +14,11 @@ namespace MvcData.Controllers
     {
         IPeopleService _peopleService;
 
-        public AjaxController()
+      
+
+        public AjaxController(IPeopleService peopleService)
         {
-            _peopleService = new PeopleService(new InMemoryPeopleRepo());
+            _peopleService = peopleService;
         }
 
         public IActionResult Index()

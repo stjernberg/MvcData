@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MvcData.Models.Service
 {
-    interface IPeopleService
+    public interface IPeopleService
     {
         Person Add(CreatePersonViewModel person);
         List<Person> All();
         List<Person> Search(string search, string type);
         Person FindById(int id);
-        bool Edit(int id, CreatePersonViewModel person);
-        bool Remove(int id);
+        void Edit(int id, CreatePersonViewModel person);
+        void Remove(int id);
         List<Person> Sort(string sorting);
     }
 }

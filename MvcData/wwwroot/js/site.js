@@ -34,5 +34,18 @@ const postDeleteId = (actionUrl, inputId) => {
             document.getElementById("message").innerHTML = "A person with that id doesn't exist.";
         })
 
+    }
 
+const searchAjax = (actionUrl, inputId) => {
+    let inputElement = $("#" + inputId);
+    const data = {
+        [inputElement.attr("name")]: inputElement.val()
+    }
+    $.post(actionUrl, data, (response) => {
+        document.getElementById("res").innerHTML = response;
+       
+    })
+        .fail(() => {
+            document.getElementById("msg").innerHTML = "Person wasn't found.";
+        })
 }

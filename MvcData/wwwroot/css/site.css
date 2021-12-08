@@ -80,7 +80,10 @@ body {
 }
 
 .navbar-custom {
-    background-color: #fde5d6;
+    background-color: #feefe1;
+}
+.footer-custom {
+    background-color: #feefe1;
 }
 
 .c-input{

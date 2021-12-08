@@ -9,10 +9,10 @@ namespace MvcData.Models.Repos
     {
         Person Create(Person person);
         List<Person> GetAll();
-       
-        Person GetById(int id);
-        bool Update(Person person);
-        bool Delete(Person person);
 
+        Person GetById(int id);
+        //bool Update(Person person);
+        void Delete(Person person);
+        void Update(Person person);
     }
 }

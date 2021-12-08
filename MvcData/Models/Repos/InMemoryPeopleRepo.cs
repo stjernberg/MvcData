@@ -16,17 +16,13 @@ namespace MvcData.Models.Repos
             return person;
         }
 
-        public bool Delete(Person person)
+        public void Delete(Person person)
         {
            if (person != null)
             {
-                return peopleList.Remove(person);                
+               peopleList.Remove(person);                
             }
-
-            else
-            {
-                return false;
-            }
+                       
         }
 
         public Person GetById(int id)
@@ -49,7 +45,7 @@ namespace MvcData.Models.Repos
         }
 
        
-        public bool Update(Person person)
+        public void Update(Person person)
         {
             Person originalPerson = GetById(person.Id);
             if (originalPerson != null)
@@ -57,13 +53,8 @@ namespace MvcData.Models.Repos
                 originalPerson.Name = person.Name;
                 originalPerson.PhoneNr = person.PhoneNr;
                 originalPerson.City = person.City;
-                return true;
-            }
-
-            else
-            {
-                return false;
-            }
+               
+            }           
            
         }
     }

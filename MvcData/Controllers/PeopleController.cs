@@ -14,9 +14,11 @@ namespace MvcData.Controllers
     {
         IPeopleService _peopleService;
 
-        public PeopleController()
+
+
+        public PeopleController(IPeopleService peopleService)
         {
-            _peopleService = new PeopleService(new InMemoryPeopleRepo());
+            _peopleService = peopleService;
         }
 
 
@@ -69,8 +71,22 @@ namespace MvcData.Controllers
             {
                 return View(peopleList);
             }
-           return NotFound();
+            return View();
 
+        }
+
+        public IActionResult AjaxSearch(string search, string type)
+        {
+            List<Person> peopleList = _peopleService.Search(search, type);
+
+
+            if (peopleList != null)
+            {
+                return View(peopleList);
+                //return PartialView("_ListOfPeople", peopleList);
+            }
+
+            return View();
         }
 
         public IActionResult SortList(string sorting)
@@ -83,7 +99,7 @@ namespace MvcData.Controllers
             return View("Index");
         }
 
-       
+
         public IActionResult Details(int id)
         {
             Person person = _peopleService.FindById(id);
@@ -97,14 +113,19 @@ namespace MvcData.Controllers
 
         public IActionResult Delete(int id)
         {
+            Person person = _peopleService.FindById(id);
 
-            if (_peopleService.Remove(id))
+            if (person == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
+                
             }
 
+            _peopleService.Remove(id);
 
             return RedirectToAction(nameof(Index));
+
+          
 
         }
 

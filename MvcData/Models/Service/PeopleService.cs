@@ -37,7 +37,7 @@ namespace MvcData.Models.Service
             return _peopleRepo.GetAll();
         }
 
-        public bool Edit(int id, CreatePersonViewModel person)
+        public void Edit(int id, CreatePersonViewModel person)
         {
             throw new NotImplementedException();
         }
@@ -47,45 +47,40 @@ namespace MvcData.Models.Service
             return _peopleRepo.GetById(id);
         }
 
-        public bool Remove(int id)
+        public void Remove(int id)
         {
-            bool remove;
+            
             Person personToDelete = _peopleRepo.GetById(id);
             if (personToDelete != null)
             {
-                remove = _peopleRepo.Delete(personToDelete);
+                _peopleRepo.Delete(personToDelete);
             }
-            else 
-            {
-                remove = false;
-            }
-            return remove;
+            
         }
 
         public List<Person> Search(string search, string type)
         {
             List<Person> filteredList = new List<Person>();
             List<Person> personList = All();
-            if (string.IsNullOrWhiteSpace(search))
+            if (!string.IsNullOrWhiteSpace(search))
             {
-                return null;
-            }
-          
-            foreach (Person person in personList)
-            {
-                if (type == "city")
-                {
-                    if (person.City.Contains(search))
-                    {
-                        filteredList.Add(person);
-                    }
-                }
 
-                if (type == "name")
+                foreach (Person person in personList)
                 {
-                    if (person.Name.Contains(search))
+                    if (type == "city")
                     {
-                        filteredList.Add(person);
+                        if (person.City.Contains(search))
+                        {
+                            filteredList.Add(person);
+                        }
+                    }
+
+                    if (type == "name")
+                    {
+                        if (person.Name.Contains(search))
+                        {
+                            filteredList.Add(person);
+                        }
                     }
                 }
             }
@@ -96,7 +91,7 @@ namespace MvcData.Models.Service
         {
             List<Person> personList = All();
             List<Person> sortedList;
-            
+
             switch (sorting)
             {
                 case "nameAsc":
@@ -118,7 +113,7 @@ namespace MvcData.Models.Service
 
             return sortedList;
         }
-        
-    }        
+
+    }
 }
 
