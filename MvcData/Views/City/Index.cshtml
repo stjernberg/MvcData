@@ -1,20 +1,35 @@
-﻿
-@model List<City>
-    @{
+﻿@model List<City>
+@{
     ViewData["Title"] = "Index Cities";
-    }
-
-    <h1>City List</h1>
-
-    <a asp-action="Create" class="btn btn-primary mt-4">Add new city</a>
-
-    <div class="row font-weight-bold mt-4 text-left">
-        <div class="col-5">City</div>
-        <div class="col-2"></div>
-    </div>
-
-    @foreach (City city in Model)
-{
-    <partial name="_CityDisplay" model="city" />
-
 }
+
+<h1>City List</h1>
+
+<a asp-action="Create" class="btn btn-primary mt-4 mb-4">Add new city</a>
+
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>City Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (City city in Model)
+        {
+        <tr>
+            <td>@city.Id</td>
+            <td> @city.CityName</td>
+            <td>
+                <a asp-action="Edit" asp-controller="City" asp-route-id="@city.Id" class="mr-2">Edit  &#187;</a>
+                <a asp-action="Details" asp-controller="City" asp-route-id="@city.Id">Details  &#187;</a>
+                <a asp-action="Delete" asp-controller="City" asp-route-id="@city.Id">Delete  &#187;</a>
+          </td>
+
+
+        </tr>
+        }
+    </tbody>
+    </table>

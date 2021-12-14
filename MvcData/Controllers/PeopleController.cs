@@ -45,11 +45,13 @@ namespace MvcData.Controllers
                 catch (ArgumentException exception)
                 {
                     ModelState.AddModelError("Name & City", exception.Message);
+                    createPerson.Cities = _cityService.GetAll();
                     return View(createPerson);
                 }
                 return RedirectToAction(nameof(Index));
 
             }
+            createPerson.Cities = _cityService.GetAll();
             return View(createPerson);
         }
 

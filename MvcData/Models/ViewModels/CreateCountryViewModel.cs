@@ -12,7 +12,7 @@ namespace MvcData.Models.ViewModels
         [StringLength(80, MinimumLength = 2)]
         [Display(Name = "Country name")]
         public string Name { get; set; }
-        //public List<City> CityList { get; set; }
+      
         public List<City> CityList { get; set; }
        
     }
