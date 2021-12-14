@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MvcData.Models.ViewModels;
 
 namespace MvcData.Models.Data
 {
@@ -8,10 +9,13 @@ namespace MvcData.Models.Data
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options)
         { }
 
-
         public DbSet<Person> People{ get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
+
 
     }
 
 }
 
+ 

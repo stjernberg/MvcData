@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace MvcData.Models.ViewModels
 {
-    public class CreatePersonViewModel
+    public class Country
     {
-        [Display (Name= "Name")]
+        [Key]
+        public int Id { get; set; }
+
         [Required]
+        [MaxLength(80)]
         public string Name { get; set; }
 
-        [Display(Name = "Phone number")]
-        [Required]
-        public int PhoneNr { get; set; }
 
-        [Display(Name = "City")]
-        [Required]
-        public int CityId { get; set; }
         public List<City> Cities { get; set; }
+       
 
-
+       
     }
 }

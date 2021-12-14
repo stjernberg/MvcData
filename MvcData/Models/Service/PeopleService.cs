@@ -17,16 +17,16 @@ namespace MvcData.Models.Service
         }
         public Person Add(CreatePersonViewModel createPerson)
         {
-            if (string.IsNullOrWhiteSpace(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.City))
+            if (string.IsNullOrWhiteSpace(createPerson.Name))
             {
-                throw new ArgumentException("Model and brand cannot consist of backsapce and whitespace");
+                throw new ArgumentException("Name  cannot consist of backsapce and whitespace");
             }
-
+             
             Person person = new Person()
             {
                 Name = createPerson.Name,
                 PhoneNr = createPerson.PhoneNr,
-                City = createPerson.City
+                CityId = createPerson.CityId
             };
             _peopleRepo.Create(person);
             return person;
@@ -69,7 +69,7 @@ namespace MvcData.Models.Service
                 {
                     if (type == "city")
                     {
-                        if (person.City.Contains(search))
+                        if (person.City.ToString().Contains(search))
                         {
                             filteredList.Add(person);
                         }

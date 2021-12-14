@@ -1,0 +1,9 @@
+﻿@model City
+
+<div class="row text-left">
+    <div class="col-5">@Model.CityName</div>
+
+    <div class="col-2"> @*@Html.ActionLink("Details", "Details", "City", new { id = Model.Id }) &#187;*@</div>
+    <div class="col-2"> @Html.ActionLink("Delete", "Delete", "City", new { id = Model.Id }) &#187;</div>
+
+</div>

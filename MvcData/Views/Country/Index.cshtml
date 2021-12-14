@@ -1,0 +1,19 @@
+﻿@model List<Country>
+@{
+    ViewData["Title"] = "Index Countries";
+}
+
+<h1>Country List</h1>
+
+<a asp-action="Create" class="btn btn-primary mt-4">Add new country</a>
+
+<div class="row font-weight-bold mt-4 text-left">
+    <div class="col-5">Country</div>
+    <div class="col-2"></div>
+</div>
+
+@foreach (Country country in Model)
+{
+    <partial name="_CountryDisplay" model="country" />
+
+}

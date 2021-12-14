@@ -13,19 +13,22 @@ namespace MvcData.Controllers
     public class PeopleController : Controller
     {
         IPeopleService _peopleService;
+        private readonly ICityService _cityService;
 
-
-
-        public PeopleController(IPeopleService peopleService)
+        
+        public PeopleController(IPeopleService peopleService, ICityService cityService)
         {
             _peopleService = peopleService;
+            _cityService = cityService;
         }
 
 
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreatePersonViewModel());
+            CreatePersonViewModel model = new CreatePersonViewModel();
+            model.Cities = _cityService.GetAll();
+            return View(model);
         }
 
         [HttpPost]
@@ -83,7 +86,7 @@ namespace MvcData.Controllers
             if (peopleList != null)
             {
                 return View(peopleList);
-                //return PartialView("_ListOfPeople", peopleList);
+               
             }
 
             return View();
@@ -124,7 +127,6 @@ namespace MvcData.Controllers
             _peopleService.Remove(id);
 
             return RedirectToAction(nameof(Index));
-
           
 
         }

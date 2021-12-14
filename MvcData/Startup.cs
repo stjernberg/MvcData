@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MvcData.Controllers;
 using MvcData.Models.Data;
 using MvcData.Models.Repos;
 using MvcData.Models.Service;
@@ -28,7 +29,11 @@ namespace MvcData
 
             services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
             services.AddScoped<IPeopleService, PeopleService>();
-            //services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>();//IoC & DI
+            services.AddScoped<ICountryRepo, DatabaseCountryRepo>();
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<ICityRepo, DatabaseCityRepo>();
+            services.AddScoped<ICityService, CityService>();
+            //services.AddScoped<IPeopleRepo, InMemoryPeopleRepo>();
 
             services.AddMvc().AddRazorRuntimeCompilation();
         }

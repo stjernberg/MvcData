@@ -36,8 +36,7 @@ namespace MvcData.Models.Repos
         public void Update(Person person)
         {
                 _peopleDbContext.People.Update(person);
-                _peopleDbContext.SaveChanges();
-         
+                _peopleDbContext.SaveChanges();        
             
         }
 
