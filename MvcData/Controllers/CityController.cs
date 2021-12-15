@@ -39,27 +39,15 @@ namespace MvcData.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateCityViewModel createCity)
         {
+            
+
             if (ModelState.IsValid)
             {
-
-                try
-                {
-                    _cityService.Create(createCity);
-                }
-
-                catch (ArgumentException exception)
-                {
-                    ModelState.AddModelError("Name", exception.Message);
-                    return View(createCity);
-                }
-
+                _cityService.Create(createCity);
                 return RedirectToAction(nameof(Index));
             }
 
-            else
-            {
-                return View(createCity);
-            }
+            return View(createCity);
 
         }
 

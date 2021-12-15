@@ -34,26 +34,14 @@ namespace MvcData.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                try
-                {
-                    _countryService.Create(createCountry);
-                }
-
-                catch (ArgumentException exception)
-                {
-                    ModelState.AddModelError("Name", exception.Message);
-                    return View(createCountry);
-                }
-
+                _countryService.Create(createCountry);
                 return RedirectToAction(nameof(Index));
             }
-
             else
             {
                 return View(createCountry);
             }
-
+           
         }
 
 
