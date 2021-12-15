@@ -26,7 +26,7 @@ namespace MvcData.Models.Service
             Country country = new Country
             {
                 Name = createCountry.Name,
-                         };
+            };
             return _countryRepo.Create(country);
         }
 

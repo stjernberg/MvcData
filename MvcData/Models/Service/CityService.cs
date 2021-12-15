@@ -26,7 +26,8 @@ namespace MvcData.Models.Service
             City city = new City
             {
                 CityName = createCity.CityName,
-               
+                CountryId = createCity.CountryId
+
             };
             return _cityRepo.Create(city);
 

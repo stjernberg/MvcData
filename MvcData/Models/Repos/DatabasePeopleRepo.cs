@@ -26,7 +26,7 @@ namespace MvcData.Models.Repos
 
         public List<Person> GetAll()
         {
-            //return _peopleDbContext.People.ToList();
+         
             return _peopleDbContext.People.Include(person => person.City).ToList();
         }
 

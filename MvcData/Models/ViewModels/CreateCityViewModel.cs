@@ -14,5 +14,8 @@ namespace MvcData.Models.ViewModels
         public string CityName { get; set; }
 
          public List<Person> PeopleList { get; set; }
+        public int CountryId { get;  set; }
+        public List<Country> Countries { get; set; }
+
     }
 }

@@ -15,7 +15,7 @@ namespace MvcData.Models
 
         public int PhoneNr { get; set; }
 
-        [ForeignKey("City")]
+        [ForeignKey(nameof(City))]
         public int? CityId { get; set; }
         public City City { get; set; }
 

@@ -12,10 +12,13 @@ namespace MvcData.Controllers
     public class CityController : Controller
     {
         private ICityService _cityService;
+        private ICountryService _countryService;
 
-        public CityController(ICityService cityService)
+        public CityController(ICityService cityService, ICountryService countryService)
         {
             _cityService = cityService;
+            _countryService = countryService;
+           
         }
         public IActionResult Index()
         {
@@ -26,8 +29,11 @@ namespace MvcData.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateCityViewModel());
+            CreateCityViewModel model = new CreateCityViewModel();
+            model.Countries = _countryService.GetAll();
+            return View(model);
         }
+    
 
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -2,11 +2,11 @@
 
 <tr>
     <td>@Model.Name</td>
-    <td> @Model.City.CityName</td>
+    <td> @*@Model.City.CityName*@</td>
     <td>
-        <a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class="mr-2">Edit  &#187;</a>
-        <a asp-action="Details" asp-controller="People" asp-route-id="@Model.Id">Details  &#187;</a>
-        <a asp-action="Delete" asp-controller="People" asp-route-id="@Model.Id">Delete  &#187;</a>
+        <a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 link-info">Edit  &#187;</a>
+        <a asp-action="Details" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 link-warning">Details  &#187;</a>
+        <a asp-action="Delete" asp-controller="People" asp-route-id="@Model.Id"  class="mr-2 link-danger">Delete  &#187;</a>
     </td>
 
 

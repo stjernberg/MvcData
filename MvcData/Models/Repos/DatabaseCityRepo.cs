@@ -1,4 +1,5 @@
-﻿using MvcData.Models.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MvcData.Models.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MvcData.Models.Repos
 
         public List<City> GetAll()
         {
-            return _peopleDbContext.Cities.ToList();
+            return _peopleDbContext.Cities.Include(city => city.Country).ToList();
         }
 
         public City FindById(int id)

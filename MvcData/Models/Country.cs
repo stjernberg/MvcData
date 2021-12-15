@@ -15,7 +15,6 @@ namespace MvcData.Models.ViewModels
         [MaxLength(80)]
         public string Name { get; set; }
 
-
         public List<City> Cities { get; set; }
        
 
