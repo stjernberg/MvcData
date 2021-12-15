@@ -32,7 +32,7 @@ namespace MvcData.Models.Repos
 
         public Person GetById(int id)
         {
-            return _peopleDbContext.People.Include(person => person.City).SingleOrDefault(person => person.Id == id);
+            return _peopleDbContext.People.Include(person => person.City).ThenInclude(city => city.Country).SingleOrDefault(person => person.Id == id);
         }
 
         public void Update(Person person)
