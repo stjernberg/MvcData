@@ -69,7 +69,7 @@ namespace MvcData.Models.Service
                 {
                     if (type == "city")
                     {
-                        if (person.City.ToString().Contains(search))
+                        if (person.City.CityName.Contains(search))
                         {
                             filteredList.Add(person);
                         }
@@ -103,11 +103,11 @@ namespace MvcData.Models.Service
                     break;
 
                 case "cityAsc":
-                    sortedList = personList.OrderBy(o => o.City).ToList();
+                    sortedList = personList.OrderBy(o => o.City.CityName).ToList();
                     break;
 
                 default:
-                    sortedList = personList.OrderByDescending(o => o.City).ToList();
+                    sortedList = personList.OrderByDescending(o => o.City.CityName).ToList();
                     break;
             }
 

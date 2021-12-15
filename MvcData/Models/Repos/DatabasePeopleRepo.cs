@@ -9,8 +9,7 @@ namespace MvcData.Models.Repos
 {
     public class DatabasePeopleRepo : IPeopleRepo
     {
-      readonly PeopleDbContext _peopleDbContext;
-
+        private PeopleDbContext _peopleDbContext;
         public DatabasePeopleRepo (PeopleDbContext peopleDbContext)
         {
             _peopleDbContext = peopleDbContext;
@@ -27,7 +26,8 @@ namespace MvcData.Models.Repos
         public List<Person> GetAll()
         {
          
-            return _peopleDbContext.People.Include(person => person.City).ToList();
+            return _peopleDbContext.People.Include(person => person.City).ThenInclude(city => city.Country)
+                .ToList(); 
         }
 
         public Person GetById(int id)

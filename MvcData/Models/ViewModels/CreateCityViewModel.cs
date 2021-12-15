@@ -16,6 +16,10 @@ namespace MvcData.Models.ViewModels
          public List<Person> PeopleList { get; set; }
         public int CountryId { get;  set; }
         public List<Country> Countries { get; set; }
+        public CreateCityViewModel()
+        {
+            Countries = new List<Country>();
+        }
 
     }
 }

@@ -16,8 +16,10 @@ namespace MvcData.Models.ViewModels
         public string Name { get; set; }
 
         public List<City> Cities { get; set; }
-       
 
-       
+        internal object ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
