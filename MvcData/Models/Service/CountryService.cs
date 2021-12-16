@@ -23,7 +23,7 @@ namespace MvcData.Models.Service
                 throw new ArgumentException("Country cannot consist of backsapce and whitespace");
             }
 
-            Country country = new Country
+            Country country = new Country()
             {
                 Name = createCountry.Name,
             };

@@ -19,7 +19,7 @@ namespace MvcData.Models.Service
         {
             if (string.IsNullOrWhiteSpace(createPerson.Name))
             {
-                throw new ArgumentException("Name  cannot consist of backsapce and whitespace");
+                throw new ArgumentException("Name cannot consist of backsapce and whitespace");
             }
              
             Person person = new Person()

@@ -20,19 +20,17 @@ namespace MvcData.Models.Service
         {
             if (string.IsNullOrWhiteSpace(createCity.CityName))
             {
-                throw new ArgumentException("Country cannot consist of backsapce and whitespace");
+                throw new ArgumentException("City cannot consist of backsapce and whitespace");
             }
 
-            City city = new City
+            City city = new City()
             {
                 CityName = createCity.CityName,
                 CountryId = createCity.CountryId
 
             };
             return _cityRepo.Create(city);
-
         }
-
         
 
         public bool Edit(int id, CreateCityViewModel cityToEdit)
