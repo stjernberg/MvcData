@@ -84,13 +84,7 @@ namespace MvcData.Controllers
 
         public IActionResult Delete(int id)
         {
-            City city = _cityService.FindById(id);
-
-            if (city == null)
-            {
-                return NotFound();
-
-            }
+          
 
             _cityService.Remove(id);
 

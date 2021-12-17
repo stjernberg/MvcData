@@ -115,16 +115,23 @@ namespace MvcData.Controllers
 
             return View(person);
         }
-
-        public IActionResult Delete(int id)
+        public IActionResult LanguageConnection(int id)
         {
             Person person = _peopleService.FindById(id);
 
             if (person == null)
             {
-                return NotFound();
-                
+                return RedirectToAction(nameof(Index));
+              
             }
+
+            return View();
+            //_peopleService.LanguageConnection(person)
+        }
+
+        public IActionResult Delete(int id)
+        {
+            
 
             _peopleService.Remove(id);
 

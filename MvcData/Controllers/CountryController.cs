@@ -25,7 +25,7 @@ namespace MvcData.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreateCountryViewModel());
+            return View();
         }
 
         [HttpPost]
@@ -89,13 +89,7 @@ namespace MvcData.Controllers
 
         public IActionResult Delete(int id)
         {
-            Country country = _countryService.FindById(id);
-
-            if (country == null)
-            {
-                return NotFound();
-
-            }
+            
 
             _countryService.Remove(id);
 

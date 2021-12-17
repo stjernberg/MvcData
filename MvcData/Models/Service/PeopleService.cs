@@ -10,8 +10,9 @@ namespace MvcData.Models.Service
 
     public class PeopleService : IPeopleService
     {
-        IPeopleRepo _peopleRepo;
-        public PeopleService(IPeopleRepo peopleRepo)
+        private IPeopleRepo _peopleRepo;
+        private ILanguageRepo _languageRepo { get; }
+        public PeopleService(IPeopleRepo peopleRepo, ILanguageRepo languageRepo)
         {
             _peopleRepo = peopleRepo;
         }
@@ -46,6 +47,13 @@ namespace MvcData.Models.Service
         {
             return _peopleRepo.GetById(id);
         }
+
+        public LanguageConnectionViewModel languageConnection(Person person)
+        {
+            LanguageConnectionViewModel languageConnection = new LanguageConnectionViewModel();
+            //languageConnection.Person = person;
+            List<Language> allLanguages = _languageRepo.GetAll();
+            ;        }
 
         public void Remove(int id)
         {

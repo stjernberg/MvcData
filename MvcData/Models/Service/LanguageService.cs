@@ -9,7 +9,7 @@ namespace MvcData.Models.Service
 {
     public class LanguageService : ILanguageService
     {
-        private readonly ILanguageRepo _languageRepo;
+        private  ILanguageRepo _languageRepo;
         public LanguageService(ILanguageRepo languageRepo)
         {
             _languageRepo = languageRepo;

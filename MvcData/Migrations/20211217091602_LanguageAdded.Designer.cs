@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcData.Models.Data;
 
 namespace MvcData.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    partial class PeopleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211217091602_LanguageAdded")]
+    partial class LanguageAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,21 +81,6 @@ namespace MvcData.Migrations
                     b.ToTable("People");
                 });
 
-            modelBuilder.Entity("MvcData.Models.PersonLanguage", b =>
-                {
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LanguageId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PersonId", "LanguageId");
-
-                    b.HasIndex("LanguageId");
-
-                    b.ToTable("PersonLanguages");
-                });
-
             modelBuilder.Entity("MvcData.Models.ViewModels.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -125,21 +112,6 @@ namespace MvcData.Migrations
                     b.HasOne("MvcData.Models.City", "City")
                         .WithMany("People")
                         .HasForeignKey("CityId");
-                });
-
-            modelBuilder.Entity("MvcData.Models.PersonLanguage", b =>
-                {
-                    b.HasOne("MvcData.Models.Language", "Language")
-                        .WithMany("PersonLanguages")
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MvcData.Models.Person", "Person")
-                        .WithMany("PersonLanguages")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

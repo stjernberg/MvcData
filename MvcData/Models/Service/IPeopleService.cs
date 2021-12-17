@@ -12,9 +12,10 @@ namespace MvcData.Models.Service
         List<Person> All();
         List<Person> Search(string search, string type);
         Person FindById(int id);
-
          void Edit(int id, CreatePersonViewModel person);
         void Remove(int id);
         List<Person> Sort(string sorting);
+        LanguageConnectionViewModel languageConnection(Person person);
+
     }
 }
