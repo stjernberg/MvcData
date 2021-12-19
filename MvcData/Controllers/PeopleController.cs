@@ -139,7 +139,7 @@ namespace MvcData.Controllers
 
             _peopleService.AddLanguage(person, langId);
 
-            return RedirectToAction(nameof(PersonLanguage), new { id = person.Id });
+            return RedirectToAction(nameof(LanguageConnection), new { id = person.Id });
         }
 
         public IActionResult RemoveLanguage(int personId, int langId)
@@ -153,7 +153,7 @@ namespace MvcData.Controllers
 
             _peopleService.RemoveLanguage(person, langId);
 
-            return RedirectToAction(nameof(PersonLanguage), new { id = person.Id });
+            return RedirectToAction(nameof(LanguageConnection), new { id = person.Id });
         }
 
         public IActionResult Delete(int id)
