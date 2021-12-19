@@ -125,19 +125,44 @@ namespace MvcData.Controllers
               
             }
 
-            return View();
-            //_peopleService.LanguageConnection(person)
+            return View(_peopleService.LanguageConnection(person));
+        
+        }
+        public IActionResult AddLanguage(int personId, int langId)
+        {
+            Person person = _peopleService.FindById(personId);
+
+            if (person == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            _peopleService.AddLanguage(person, langId);
+
+            return RedirectToAction(nameof(PersonLanguage), new { id = person.Id });
+        }
+
+        public IActionResult RemoveLanguage(int personId, int langId)
+        {
+            Person person = _peopleService.FindById(personId);
+
+            if (person == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            _peopleService.RemoveLanguage(person, langId);
+
+            return RedirectToAction(nameof(PersonLanguage), new { id = person.Id });
         }
 
         public IActionResult Delete(int id)
         {
             
-
             _peopleService.Remove(id);
 
             return RedirectToAction(nameof(Index));
           
-
         }
 
     }

@@ -7,15 +7,15 @@ namespace MvcData.Models.ViewModels
 {
     public class LanguageConnectionViewModel
     {
-        public Person Person { get; }
-        public List<Language> AllLanguages { get; }
-        public List<Language> SpokenLanguages { get; }
+
+        public Person Person { get; set; }
+        public List<Language> AllLanguages { get; set; }
+        public List<Language> SpokenLanguages { get; set; }
         public LanguageConnectionViewModel()
         {            
             SpokenLanguages = new List<Language>();
             AllLanguages = new List<Language>();
-            Person = Person;
-        }
+         }
 
         
     }

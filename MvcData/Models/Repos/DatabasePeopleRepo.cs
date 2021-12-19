@@ -26,15 +26,21 @@ namespace MvcData.Models.Repos
         public List<Person> GetAll()
         {
          
-            return _peopleDbContext.People.Include(person => person.City).ThenInclude(city => city.Country)
+            return _peopleDbContext.People
+                .Include(person => person.City)
+                .ThenInclude(city => city.Country)
                 .ToList(); 
         }
 
         public Person GetById(int id)
         {
-            return _peopleDbContext.People.Include(person => person.City).ThenInclude(city => city.Country).SingleOrDefault(person => person.Id == id);
+            return _peopleDbContext.People
+                .Include(person => person.City)
+                .ThenInclude(person => person.Country)
+                .Include(person => person.PersonLanguages)                  
+                .SingleOrDefault(person => person.Id == id);
         }
-
+        
         public void Update(Person person)
         {
                 _peopleDbContext.People.Update(person);

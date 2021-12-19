@@ -3,7 +3,7 @@
     ViewData["Title"] = "LanguageConnection";
 }
 
-<h1>Connected Languages -  @Model.Person.Name</h1>
+<h1 class="mb-4">Connected Languages -  @Model.Person.Name</h1>
 <div class="row">
     <div class="col-6">
         <h4 class="row">Spoken languages</h4>
@@ -15,7 +15,7 @@
                 {
                     <tr>
                         <th>@spokenLanguage.Name</th>
-                        <th> <a asp-action="Delete" asp-controller="People" asp-route-id="@spokenLanguage.Id" class=" text-danger">Delete  &#187;</a></th>
+                        <th> <a asp-action="RemoveLanguage" asp-controller="People" asp-route-personId="@Model.Person.Id"  asp-route-langId="@spokenLanguage.Id"class=" text-danger">Remove  &#187;</a></th>
                     </tr>
 
                 }
@@ -27,13 +27,14 @@
         <h4 class="row">Possible languages</h4>
         <table class="table table-striped">
 
+
             <tbody>
 
                 @foreach (Language allLanguages in Model.AllLanguages)
                 {
                     <tr>
                         <th>@allLanguages.Name</th>
-                        <th> <a asp-action="AddLanguage" asp-controller="People" asp-route-id="@allLanguages.Id" class=" text-danger">Add  &#187;</a></th>
+                        <th> <a asp-action="AddLanguage" asp-controller="People" asp-route-personId="@Model.Person.Id" asp-route-langId="@allLanguages.Id" class=" text-danger">Add  &#187;</a></th>
                     </tr>
 
                 }
@@ -41,3 +42,5 @@
         </table>
     </div>
 </div>
+
+<a asp-action="Details" asp-route-id="@Model.Person.Id">Back to Details  &#187;</a>

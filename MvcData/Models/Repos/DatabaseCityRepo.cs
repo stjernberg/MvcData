@@ -42,7 +42,7 @@ namespace MvcData.Models.Repos
 
         public City FindById(int id)
         {
-            return _peopleDbContext.Cities.SingleOrDefault(city => city.Id == id);
+            return _peopleDbContext.Cities.Include(city => city.Country).SingleOrDefault(city => city.Id == id);
         }
 
         public bool Update(City city)

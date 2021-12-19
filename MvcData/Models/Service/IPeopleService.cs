@@ -15,7 +15,10 @@ namespace MvcData.Models.Service
          void Edit(int id, CreatePersonViewModel person);
         void Remove(int id);
         List<Person> Sort(string sorting);
-        LanguageConnectionViewModel languageConnection(Person person);
+        LanguageConnectionViewModel LanguageConnection(Person person);
+
+        void RemoveLanguage(Person person, int langId);
+        void AddLanguage(Person person, int langId);
 
     }
 }

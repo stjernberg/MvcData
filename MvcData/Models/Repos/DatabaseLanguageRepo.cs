@@ -1,4 +1,5 @@
-﻿using MvcData.Models.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MvcData.Models.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,11 @@ namespace MvcData.Models.Repos
 
         public Language FindById(int id)
         {
-            return _peopleDbContext.Languages.SingleOrDefault(language => language.Id == id);
+            return _peopleDbContext.Languages              
+                    .SingleOrDefault(language => language.Id == id);
         }
-
+        //Include(language => language.PersonLanguages)
+        //            .ThenInclude(language => language.Person)
         public bool Update(Language language)
         {
             _peopleDbContext.Languages.Update(language);           

@@ -85,5 +85,13 @@ namespace MvcData.Controllers
             return View(createLanguage);
         }
 
+        public IActionResult Delete(int id)
+        {
+
+            _languageService.Remove(id);
+
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }

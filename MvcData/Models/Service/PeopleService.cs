@@ -10,11 +10,14 @@ namespace MvcData.Models.Service
 
     public class PeopleService : IPeopleService
     {
-        private IPeopleRepo _peopleRepo;
-        private ILanguageRepo _languageRepo { get; }
+        private  IPeopleRepo _peopleRepo;
+        private readonly ILanguageRepo _languageRepo;
+
+
         public PeopleService(IPeopleRepo peopleRepo, ILanguageRepo languageRepo)
         {
             _peopleRepo = peopleRepo;
+            _languageRepo = languageRepo;
         }
         public Person Add(CreatePersonViewModel createPerson)
         {
@@ -46,14 +49,25 @@ namespace MvcData.Models.Service
         public Person FindById(int id)
         {
             return _peopleRepo.GetById(id);
-        }
+        } 
 
-        public LanguageConnectionViewModel languageConnection(Person person)
+        public LanguageConnectionViewModel LanguageConnection(Person person)
         {
-            LanguageConnectionViewModel languageConnection = new LanguageConnectionViewModel();
-            //languageConnection.Person = person;
+             LanguageConnectionViewModel languageConnection = new LanguageConnectionViewModel();
+            languageConnection.Person = person;
             List<Language> allLanguages = _languageRepo.GetAll();
-            ;        }
+
+            foreach (PersonLanguage personLanguage in person.PersonLanguages)
+            {
+                Language language = allLanguages.Single(lang => lang.Id == personLanguage.LanguageId);
+                languageConnection.SpokenLanguages.Add(language);
+                allLanguages.Remove(language);
+            }
+
+            languageConnection.AllLanguages = allLanguages;
+
+            return languageConnection;
+        }
 
         public void Remove(int id)
         {
@@ -122,6 +136,27 @@ namespace MvcData.Models.Service
             return sortedList;
         }
 
+        public void RemoveLanguage(Person person, int langId)
+        {
+           PersonLanguage language = person.PersonLanguages.SingleOrDefault(persLang => persLang.LanguageId == langId);
+           person.PersonLanguages.Remove(language);
+            _peopleRepo.Update(person);
+        }
+
+        public void AddLanguage(Person person, int langId)
+        {
+           PersonLanguage language = new PersonLanguage()
+            {
+                LanguageId = langId,
+                PersonId = person.Id
+            };
+
+            person.PersonLanguages.Add(language);
+
+            _peopleRepo.Update(person);
+        }
+
+       
     }
 }
 
