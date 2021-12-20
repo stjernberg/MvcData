@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MvcData.Models.ViewModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace MvcData.Models.Data
 {
-    public class PeopleDbContext : DbContext
+    public class PeopleDbContext : IdentityDbContext<User>
     {
 
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options)
@@ -11,6 +13,7 @@ namespace MvcData.Models.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<PersonLanguage>().HasKey(pl =>
            new
            {
