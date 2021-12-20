@@ -24,8 +24,8 @@ namespace MvcData.Models.Repos
 
         public bool Delete(City city)
         {
-
-            _peopleDbContext.Cities.Remove(city);
+         
+                _peopleDbContext.Cities.Remove(city);
             int saveChanges = _peopleDbContext.SaveChanges();
             if (saveChanges == 0)
             {
@@ -42,11 +42,13 @@ namespace MvcData.Models.Repos
 
         public City FindById(int id)
         {
-            return _peopleDbContext.Cities.Include(city => city.Country).SingleOrDefault(city => city.Id == id);
+            return _peopleDbContext.Cities.SingleOrDefault(city => city.Id == id);
         }
+       
 
         public bool Update(City city)
         {
+          
             _peopleDbContext.Cities.Update(city);
             int updateChanges = _peopleDbContext.SaveChanges();
             if (updateChanges == 0)

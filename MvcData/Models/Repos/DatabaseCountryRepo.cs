@@ -24,10 +24,10 @@ namespace MvcData.Models.Repos
       
         public bool Delete(Country country)
         {
-            
+
             _peopleDbContext.Countries.Remove(country);
-            int saveChanges =_peopleDbContext.SaveChanges();
-            if(saveChanges == 0)
+            int saveChanges = _peopleDbContext.SaveChanges();
+            if (saveChanges == 0)
             {
                 return false;
             }

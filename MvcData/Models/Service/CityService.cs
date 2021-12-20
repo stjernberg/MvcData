@@ -62,6 +62,7 @@ namespace MvcData.Models.Service
         public bool Remove(int id)
         {
             City city = _cityRepo.FindById(id);
+         
             if (city != null)
             {
                 return _cityRepo.Delete(city);

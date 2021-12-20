@@ -13,17 +13,7 @@
             <input type="text" class="form-control" asp-for="CityName">
             <span asp-validation-for="CityName" class="text-danger"></span>
         </div>
-
-        @*<div class="form-group">
-                <label asp-for="CountryId">Country</label>
-                <select asp-for="CountryId">
-                    @foreach (Country country in Model.Countries)
-                    {
-                        <option value="@country.Id">@country.Name</option>
-                    }
-                </select>
-                <span asp-validation-for="CountryId"></span>
-            </div>*@
+               
         <a asp-action="Index" class="btn btn-info mr-2">Back to City List</a>
         <button class="btn btn-primary">Update</button>
 

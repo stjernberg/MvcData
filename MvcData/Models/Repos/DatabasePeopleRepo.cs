@@ -28,7 +28,8 @@ namespace MvcData.Models.Repos
          
             return _peopleDbContext.People
                 .Include(person => person.City)
-                .ThenInclude(city => city.Country)
+                .ThenInclude(person => person.Country)
+                .Include(person => person.PersonLanguages)
                 .ToList(); 
         }
 
@@ -37,7 +38,7 @@ namespace MvcData.Models.Repos
             return _peopleDbContext.People
                 .Include(person => person.City)
                 .ThenInclude(person => person.Country)
-                .Include(person => person.PersonLanguages)                  
+                .Include(person => person.PersonLanguages)
                 .SingleOrDefault(person => person.Id == id);
         }
         

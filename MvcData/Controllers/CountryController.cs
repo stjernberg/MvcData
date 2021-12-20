@@ -89,11 +89,10 @@ namespace MvcData.Controllers
 
         public IActionResult Delete(int id)
         {
-            
-
+           
             _countryService.Remove(id);
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
 
         }
     }

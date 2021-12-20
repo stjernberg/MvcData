@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit country";
 }
 
-<h2 class="mb-4">Edit Language</h2>
+<h2 class="mb-3">Edit Language</h2>
 <div class="w-50  mx-auto">
     <form asp-action="Edit" method="post" class="flex-form" asp-route-id="@ViewBag.Id">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -14,9 +14,10 @@
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 
-
-        <a asp-action="Index" class="btn btn-info mr-2">Back to List</a>
-        <button class="btn btn-primary">Update</button>
+        <div class="d-flex">
+            <a asp-action="Index" class="btn btn-info mr-2">Back to List</a>
+            <button class="btn btn-primary">Update</button>
+        </div>
 
     </form>
     </div>
