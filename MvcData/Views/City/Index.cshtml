@@ -26,10 +26,7 @@
             <tr>
                 <td>@city.Id</td>
                 <td>@city.CityName</td>
-                <td>@city.Country.Name</td>
-                @*<td>  @Html.DisplayFor(modelItem => city.Id)</td>
-                    <td>   @Html.DisplayFor(modelItem => city.CityName)</td>
-                    <td>   @Html.DisplayFor(modelItem => city.Country.Name)</td>*@
+                <td>@city.Country.Name</td>             
                 <td>
                     <a asp-action="Edit" asp-controller="City" asp-route-id="@city.Id" class="mr-4 text-warning">Edit  &#187;</a>
 
