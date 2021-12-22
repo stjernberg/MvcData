@@ -4,6 +4,15 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-  
+    <h1 class="display-4 mt-5">Welcome</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h3>@User.Identity.Name</h3>
+    }
+
+    else
+    {
+        <a class="btn btn-primary mt-5" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+    }
+   
 </div>

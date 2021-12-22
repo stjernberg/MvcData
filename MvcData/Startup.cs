@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MvcData.Controllers;
+using MvcData.Models;
 using MvcData.Models.Data;
 using MvcData.Models.Repos;
 using MvcData.Models.Service;
@@ -28,9 +29,19 @@ namespace MvcData
             services.AddDbContext<PeopleDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<AppUser, IdentityRole>()
                .AddEntityFrameworkStores<PeopleDbContext>()
                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options =>
+            {   
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+            });
 
             services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
             services.AddScoped<IPeopleService, PeopleService>();

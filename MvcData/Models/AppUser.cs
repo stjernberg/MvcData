@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MvcData.Models
 {
-    public class User : IdentityUser
+    public class AppUser : IdentityUser
     {
         
         public string LastName { get; set; }

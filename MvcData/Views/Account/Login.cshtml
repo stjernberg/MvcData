@@ -1,0 +1,49 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<hr />
+@if (ViewBag.Msg != null)
+{
+    <h4 class="text-danger">ViewBag.Msg</h4>
+}
+
+<div class="row">
+    <div class="col-md-4  mx-auto">
+        <form asp-action="Login">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+        @*<form asp-action="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="userName" class="control-label">User name</label>
+                    <input type="text" name="userName" class="form-control" />
+                    <span for="userName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label">Password</label>
+                    <input name="password" class="form-control" />
+                    <span for="password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+            </form>*@
+    </div>
+</div>

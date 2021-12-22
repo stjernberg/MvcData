@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MvcData.Migrations
 {
-    public partial class IdentityAdded : Migration
+    public partial class IdentityAndUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +39,10 @@ namespace MvcData.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MvcData.Models.Data
 {
-    public class PeopleDbContext : IdentityDbContext<User>
+    public class PeopleDbContext : IdentityDbContext<AppUser>
     {
 
         public PeopleDbContext(DbContextOptions<PeopleDbContext> options) : base(options)
