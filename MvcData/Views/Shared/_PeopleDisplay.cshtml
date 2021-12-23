@@ -6,11 +6,13 @@
     <td> @Model.City.Country.Name</td>
     
     <td>
-        @*<a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-warning">Edit  &#187;</a>*@
+        <a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-warning">Edit  &#187;</a>
         <a asp-action="Details" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-info">Details  &#187;</a>
-        <a asp-action="Delete" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-danger">Delete  &#187;</a>
-       
-    </td>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Delete" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-danger">Delete  &#187;</a>
+        }
+        </td>
 
 
 </tr>

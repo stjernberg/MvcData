@@ -41,9 +41,18 @@ namespace MvcData.Models.Service
             return _peopleRepo.GetAll();
         }
 
-        public void Edit(int id, CreatePersonViewModel person)
+        public bool Edit(int id, CreatePersonViewModel editPerson)
         {
-            throw new NotImplementedException();
+           Person person = _peopleRepo.GetById(id);
+
+            if (person != null)
+            {
+                person.Name = editPerson.Name;
+                person.CityId = editPerson.CityId;
+                person.PhoneNr = editPerson.PhoneNr;
+            };
+
+            return _peopleRepo.Update(person);
         }
 
         public Person FindById(int id)
@@ -156,7 +165,7 @@ namespace MvcData.Models.Service
             _peopleRepo.Update(person);
         }
 
-       
+        
     }
 }
 

@@ -43,6 +43,7 @@ namespace MvcData
                 options.Password.RequiredUniqueChars = 1;
             });
 
+           
             services.AddScoped<IPeopleRepo, DatabasePeopleRepo>();
             services.AddScoped<IPeopleService, PeopleService>();
             services.AddScoped<ICountryRepo, DatabaseCountryRepo>();

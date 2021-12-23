@@ -18,7 +18,7 @@
         {
             <div class="row">
                 <p class="mr-3 mb-4">@user.UserName</p>
-                <a class="btn btn-danger mb-4" asp-action="RemoveFromRole" asp-route-roleId="@Model.Role.Id" asp-route-userId="@user.Id">Remove</a>
+                <a class="btn btn-danger btn-sm mb-4" asp-action="RemoveFromRole" asp-route-roleId="@Model.Role.Id" asp-route-userId="@user.Id">Remove</a>
             </div>
         }
     </div>
@@ -29,7 +29,7 @@
         {
             <div class="row">
                 <p class="mr-3 mb-4">@user.UserName</p>
-                <a class="btn btn-success mb-4" asp-action="AddToRole" asp-route-roleId="@Model.Role.Id" asp-route-userId="@user.Id">Add</a>
+                <a class="btn btn-success btn-sm mb-4" asp-action="AddToRole" asp-route-roleId="@Model.Role.Id" asp-route-userId="@user.Id">Add</a>
             </div>
         }
     </div>

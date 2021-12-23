@@ -11,8 +11,9 @@ namespace MvcData.Models.Repos
         List<Person> GetAll();
 
         Person GetById(int id);
-       
+
         void Delete(Person person);
-        void Update(Person person);
+        bool Update(Person person);
     }
 }
+

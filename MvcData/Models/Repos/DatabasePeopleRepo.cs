@@ -42,10 +42,18 @@ namespace MvcData.Models.Repos
                 .SingleOrDefault(person => person.Id == id);
         }
         
-        public void Update(Person person)
+        public bool Update(Person person)
         {
-                _peopleDbContext.People.Update(person);
-                _peopleDbContext.SaveChanges();        
+            _peopleDbContext.People.Update(person);
+            int updateChanges = _peopleDbContext.SaveChanges();
+            if (updateChanges == 0)
+            {
+                return false;
+            }
+
+            return true;
+            //_peopleDbContext.People.Update(person);
+            //    _peopleDbContext.SaveChanges();        
             
         }
 

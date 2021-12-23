@@ -45,7 +45,7 @@ namespace MvcData.Models.Repos
         }
 
        
-        public void Update(Person person)
+        public bool update(Person person)
         {
             Person originalPerson = GetById(person.Id);
             if (originalPerson != null)
@@ -54,8 +54,14 @@ namespace MvcData.Models.Repos
                 originalPerson.PhoneNr = person.PhoneNr;
                 originalPerson.City = person.City;
                
-            }           
-           
+            }
+            return originalPerson != null;
+
+        }
+
+        public bool Update(Person person)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -115,6 +115,45 @@ namespace MvcData.Controllers
 
             return View(person);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Person person = _peopleService.FindById(id);
+
+            if (person == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            CreatePersonViewModel editPerson = new CreatePersonViewModel()
+            {
+                Name = person.Name,
+                PhoneNr = person.PhoneNr,
+                CityId = person.Id,
+            };
+            editPerson.Cities = _cityService.GetAll();
+
+            ViewBag.Id = id;
+
+            return View(editPerson);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CreatePersonViewModel editPerson)
+        {
+            if (ModelState.IsValid)
+            {
+                _peopleService.Edit(id, editPerson);
+
+                return RedirectToAction("Index");
+            }
+            editPerson.Cities = _cityService.GetAll();
+            ViewBag.Id = id;
+
+            return View(editPerson);
+        }
         public IActionResult LanguageConnection(int id)
         {
             Person person = _peopleService.FindById(id);

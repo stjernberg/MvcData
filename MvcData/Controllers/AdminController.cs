@@ -11,6 +11,7 @@ using MvcData.Models.ViewModels;
 
 namespace MvcData.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -137,11 +138,16 @@ namespace MvcData.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction(nameof(ManageUserRoles), new { msg = "User has successfully been removed from the role", id = role.Id });
+                return RedirectToAction(nameof(ManageUserRoles), new { msg = "User has successfully been removed from the role.", id = role.Id });
             }
 
            
-            return RedirectToAction(nameof(ManageUserRoles), new { msg = "Failed to remove user from the role", id = role.Id });
+            return RedirectToAction(nameof(ManageUserRoles), new { msg = "Failed to remove user from the role.", id = role.Id });
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
