@@ -18,5 +18,7 @@ namespace MvcData.Models.ViewModels
         public List<City> Cities { get; set; }
 
        
+
+
     }
 }

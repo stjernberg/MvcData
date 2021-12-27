@@ -12,7 +12,7 @@
 
 <div class="row">
 
-    <div class="col-6">
+    <div class="col-6 text-left">
         <h4> Assigned to: </h4>
         @foreach (var user in Model.UserWithRole)
         {
@@ -35,3 +35,5 @@
     </div>
 
 </div>
+
+<a asp-action="Index" class="btn btn-info  mt-4 mr-3">Back to list</a>

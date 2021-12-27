@@ -11,7 +11,7 @@ using MvcData.Models.ViewModels;
 
 namespace MvcData.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
