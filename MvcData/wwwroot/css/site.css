@@ -1,6 +1,24 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+html {
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -24,15 +42,14 @@ a {
   border-color: #1861ac;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
+a {
+    color: grey;
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+
+li{
+    margin-right: 30px;
+    font-weight: bold;
+   
 }
 
 .border-top {
@@ -51,18 +68,7 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
- 
-}
 
 
 .container-width{
@@ -76,6 +82,12 @@ body {
     text-align: left ;
 }
 
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: slategrey;
+}
+
 
 .footer-custom {
     background-color: #feefe1;
@@ -85,12 +97,16 @@ body {
     width: 20px;
 }
 
-.flex-form{
+
+
+.flex-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+
 
 .footer {
     position: absolute;
@@ -100,7 +116,34 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
+header {
+    background-color: #feefe1
+}
+
 .navbar-custom {
-    background-color: #f7f7f7;
-    /*background-color: #feefe1;*/
+    /*background-color: #f7f7f7;*/   
+    background-color: #feefe1;
+}
+
+.nav-link {
+   color: grey;
+}
+
+table {
+    table-layout: fixed;
+    width: 700px;
+}
+
+tr td {
+    
+    overflow: auto;
+    white-space: nowrap;
+    overflow: hidden;
+   
+}
+
+tr th {
+    overflow: hidden;
+    white-space: nowrap;
+    
 }

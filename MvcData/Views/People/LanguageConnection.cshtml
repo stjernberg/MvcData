@@ -6,7 +6,7 @@
 <h1 class="mb-5">Connected Languages -  @Model.Person.Name</h1>
 <div class="row">
     <div class="col-6">
-        <h4 class="row  mb-3">Spoken languages</h4>
+        <h4 class="row  mb-3 text-center">Spoken languages</h4>
         <table class="table table-striped table-hovre">
 
             <tbody>
@@ -15,7 +15,7 @@
                 {
                     <tr>
                         <th>@spokenLanguage.Name</th>
-                        <th> <a asp-action="RemoveLanguage" asp-controller="People" asp-route-personId="@Model.Person.Id"  asp-route-langId="@spokenLanguage.Id"class=" text-danger">Remove  &#187;</a></th>
+                        <th> <a asp-action="RemoveLanguage" asp-controller="People" asp-route-personId="@Model.Person.Id"  asp-route-langId="@spokenLanguage.Id"class=" text-danger"><i class="fas fa-trash-alt mr-1"></i>Remove </a></th>
                     </tr>
 
                 }
@@ -34,7 +34,7 @@
                 {
                     <tr>
                         <th>@allLanguages.Name</th>
-                        <th> <a asp-action="AddLanguage" asp-controller="People" asp-route-personId="@Model.Person.Id" asp-route-langId="@allLanguages.Id" class=" text-danger">Add  &#187;</a></th>
+                        <th> <a asp-action="AddLanguage" asp-controller="People" asp-route-personId="@Model.Person.Id" asp-route-langId="@allLanguages.Id" class=" text-primary"><i class="fas fa-plus mr-1"></i>Add </a></th>
                     </tr>
 
                 }
@@ -43,4 +43,4 @@
     </div>
 </div>
 
-<a asp-action="Details" asp-route-id="@Model.Person.Id">Back to Details  &#187;</a>
+<a asp-action="Details" asp-route-id="@Model.Person.Id">Back to Details <i class="fas fa-angle-double-right"></i></a>

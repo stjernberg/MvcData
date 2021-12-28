@@ -113,6 +113,14 @@ namespace MvcData.Models.Service
                             filteredList.Add(person);
                         }
                     }
+
+                    if (type == "country")
+                    {
+                        if (person.City.Country.Name.Contains(search))
+                        {
+                            filteredList.Add(person);
+                        }
+                    }
                 }
             }
             return filteredList;

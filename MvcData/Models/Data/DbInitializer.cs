@@ -14,7 +14,7 @@ namespace MvcData.Models.Data
         {
             context.Database.EnsureCreated();
 
-           
+           //If there's no role
             if (!context.Roles.Any())
             {
                 //Create SuperAdmin role
@@ -24,8 +24,7 @@ namespace MvcData.Models.Data
 
                 if (!result.Succeeded)
                 {
-                    ApplicationException exception = new ApplicationException($"Default role SuperAdmin cannot be created");
-                    throw exception;
+                    ErrorMessages(result);
                 }
 
                 //Create user and add to SuperAdmin role
@@ -42,15 +41,14 @@ namespace MvcData.Models.Data
 
                 if (!userResult.Succeeded)
                 {
-                    ApplicationException exception = new ApplicationException($"Default user SuperAdmin cannot be created");
-                    throw exception;
+                    ErrorMessages(userResult);
                 }
 
                 userManager.AddToRoleAsync(appUser, role.Name).Wait();
             }
 
-
-            if (!context.Roles.Any(r => r.Name == "Admin"))
+            //If there is no admin role
+            if (!context.Roles.Any(role => role.Name == "Admin"))
             {
                 //Create Admin role
                 IdentityRole adminRole = new IdentityRole("Admin");
@@ -58,8 +56,7 @@ namespace MvcData.Models.Data
 
                 if (!adminResult.Succeeded)
                 {
-                    ApplicationException exception = new ApplicationException($"Default role Admin cannot be created");
-                    throw exception;
+                    ErrorMessages(adminResult);
                 }
 
                 //Create user and add to Admin role
@@ -76,13 +73,21 @@ namespace MvcData.Models.Data
 
                 if (!identityResult.Succeeded)
                 {
-                    ApplicationException exception = new ApplicationException($"Default user Admin cannot be created");
-                    throw exception;
+                    ErrorMessages(identityResult);
                 }
 
                 userManager.AddToRoleAsync(appUser, adminRole.Name).Wait();
             }
+        }
 
+        private static void ErrorMessages(IdentityResult identityResult)
+        {
+            string errors = "";
+            foreach (var error in identityResult.Errors)
+            {
+                errors += error.Code + ",  " + error.Description;
+            }
+            throw new Exception(errors);
         }
     }
 }

@@ -18,11 +18,15 @@
     </div>
     <div class="d-flex justify-content-center mb-3">
         <a asp-action="Index" class="btn btn-primary  mt-4 mr-3">Back.</a>
-        <a class="btn btn-danger mt-4 ml-3" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+        {
+            <a class="btn btn-danger btn-xs mt-4 ml-3" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        }
     </div>
+
+
+    <a asp-action="LanguageConnection" asp-controller="People" asp-route-id="@Model.Id" class="mt-6 waves-effect waves-light font-weight-bold mb-3 text-decoration-none text-secondary">Languages connected to  @Model.Name<i class="fas fa-hand-point-right ml-1 fa-lg"></i></a>
     <div className="card-footer"></div>
 </div>
-<a asp-action="LanguageConnection" asp-controller="People" asp-route-id="@Model.Id" class="mt-6 text-primary">Languages connected &#187;</a>
-
 
 

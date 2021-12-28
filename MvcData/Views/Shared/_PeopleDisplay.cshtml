@@ -4,15 +4,20 @@
     <td>@Model.Name</td>
     <td> @Model.City.CityName</td>
     <td> @Model.City.Country.Name</td>
-    
+
     <td>
-        <a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-warning">Edit  &#187;</a>
-        <a asp-action="Details" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-info">Details  &#187;</a>
-        @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
-        {
-            <a asp-action="Delete" asp-controller="People" asp-route-id="@Model.Id" class="mr-2 text-danger">Delete  &#187;</a>
-        }
+        <a asp-action="Edit" asp-controller="People" asp-route-id="@Model.Id" class=" text-warning"><i class="fas fa-edit  mr-1"></i>Edit  </a>
+    </td>
+    <td>
+        <a asp-action="Details" asp-controller="People" asp-route-id="@Model.Id" class=" text-info"><i class="fas fa-info-circle mr-1"></i>Details</a>
+    </td>
+    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+    {
+        <td>
+            <a asp-action="Delete" asp-controller="People" asp-route-id="@Model.Id" class="text-danger"><i class="fas fa-trash-alt mr-1"></i>Delete </a>
         </td>
+    }
+
 
 
 </tr>
