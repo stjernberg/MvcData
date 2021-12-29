@@ -13,75 +13,74 @@
 </head>
 <body>
 
-    <header class="mb-lg-5 d-flex align-items-center" >
+        <nav class="navbar navbar-expand-lg navbar-custom navbar-light  mb-3 font-weight-bold w-100 box-shadow p-4">
 
-        <nav class="navbar navbar-expand-md  navbar-custom navbar-light border-bottom box-shadow mb-3 font-weight-bold w-100 ">
-          
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="navbar-brand mr-4" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-          
-        <div class="navbar-collapse collapse   ">
-            <ul class="navbar-nav mr-auto ">
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="People" asp-action="Index">People</a>
-                    </li>
-                }
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav mr-auto ">
 
-                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link " asp-area="" asp-controller="Admin" asp-action="Index">Roles</a>
-                    </li>                  
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Ajax" asp-action="Index">Ajax-list</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " asp-area="" asp-controller="Country" asp-action="Index">Countries</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " asp-area="" asp-controller="City" asp-action="Index">Cities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  " asp-area="" asp-controller="Language" asp-action="Index">Languages</a>
-                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="People" asp-action="Index">People</a>
+                        </li>
+                    }
 
-                }
-            </ul>
-            <ul class="navbar-nav ml-auto ">
+                    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Admin" asp-action="Index">Roles</a>
+                        </li>
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                <li class="nav-item ">
-                    <a class="nav-link">
-                        <i class="fas fa-user-alt"></i>
-                        @User.Identity.Name
-                        </a>
-                </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Ajax" asp-action="Index">Ajax-list</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Country" asp-action="Index">Countries</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="City" asp-action="Index">Cities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  " asp-area="" asp-controller="Language" asp-action="Index">Languages</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link  " asp-area="" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                    </li>
-                }
-                else
-                {
-                    <li class="nav-item">
-                        <a class="nav-link " asp-area="" asp-controller="Account" asp-action="RegisterUser">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " asp-area="" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt  mr-1"></i>Login</a>
-                    </li>
-                }
+                    }
+                </ul>
+                <ul class="navbar-nav ml-auto ">
 
-            </ul>
-        </div>           
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item ">
+                            <a class="nav-link">
+                                <i class="fas fa-user-alt"></i>
+                                @User.Identity.Name
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  " asp-area="" asp-controller="Account" asp-action="Logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Account" asp-action="RegisterUser">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="Account" asp-action="Login"><i class="fas fa-sign-in-alt  mr-1"></i>Login</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
         </nav>
-    </header>
+   
 
     <div class="container d-flex align-items-center justify-content-center text-center">
         <main role="main" class=" w-75 d-flex-column ">

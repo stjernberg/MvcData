@@ -89,7 +89,7 @@ namespace MvcData.Models.Service
             
         }
 
-        public List<Person> Search(string search, string type)
+        public List<Person> Search(string search, string searchBy)
         {
             List<Person> filteredList = new List<Person>();
             List<Person> personList = All();
@@ -98,7 +98,7 @@ namespace MvcData.Models.Service
 
                 foreach (Person person in personList)
                 {
-                    if (type == "city")
+                    if (searchBy == "city")
                     {
                         if (person.City.CityName.Contains(search))
                         {
@@ -106,7 +106,7 @@ namespace MvcData.Models.Service
                         }
                     }
 
-                    if (type == "name")
+                    if (searchBy == "name")
                     {
                         if (person.Name.Contains(search))
                         {
@@ -114,13 +114,15 @@ namespace MvcData.Models.Service
                         }
                     }
 
-                    if (type == "country")
+                    if (searchBy == "country")
                     {
                         if (person.City.Country.Name.Contains(search))
                         {
                             filteredList.Add(person);
                         }
                     }
+
+
                 }
             }
             return filteredList;
@@ -145,8 +147,21 @@ namespace MvcData.Models.Service
                     sortedList = personList.OrderBy(o => o.City.CityName).ToList();
                     break;
 
-                default:
+                case "cityDes":
                     sortedList = personList.OrderByDescending(o => o.City.CityName).ToList();
+                    break;
+
+
+                case "countryAsc":
+                    sortedList = personList.OrderBy(o => o.City.Country.Name).ToList();
+                    break;
+
+                case "countryDes":
+                    sortedList = personList.OrderByDescending(o => o.City.Country.Name).ToList();
+                    break;
+
+                default:
+                    sortedList = personList.OrderBy(o => o.Name).ToList(); ;
                     break;
             }
 
