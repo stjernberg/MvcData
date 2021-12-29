@@ -132,7 +132,7 @@ namespace MvcData.Models.Service
         {
             List<Person> personList = All();
             List<Person> sortedList;
-
+           
             switch (sorting)
             {
                 case "nameAsc":
@@ -164,8 +164,8 @@ namespace MvcData.Models.Service
                     sortedList = personList.OrderBy(o => o.Name).ToList(); ;
                     break;
             }
-
-            return sortedList;
+             
+            return (sortedList);
         }
 
         public void RemoveLanguage(Person person, int langId)

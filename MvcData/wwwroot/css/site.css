@@ -42,9 +42,11 @@ a {
   border-color: #1861ac;
 }
 
-a {
+    a {
     color: grey;
 }
+
+
 
 li{
     margin-right: 30px;
@@ -131,12 +133,37 @@ header {
    color: grey;
 }
 
-table {
-    table-layout: fixed;
-    width: 700px;
+@media (max-width: 575.98px) {
+    header h1 {
+        text-align: center
+    }
+
+    .my-table {
+        border-spacing: 1.5rem;
+    }
+
+        .my-table thead {
+            display: none;
+        }
+
+        .my-table tr {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+            .my-table tr > td:not(:last-child) {
+                flex: 1;
+            }
+
+            .my-table tr > td:last-child {
+                width: 100%;
+            }
 }
 
-tr td {
+
+/*tr td {
     
     overflow: auto;
     white-space: nowrap;
@@ -148,4 +175,4 @@ tr th {
     overflow: hidden;
     white-space: nowrap;
     
-}
+}*/
